@@ -1,10 +1,10 @@
 import sys
 sys.path.append("..")
-sys.path.append("/usr/local/airflow/core/")
-sys.path.append("/usr/local/airflow/config/")
-sys.path.append("/usr/local/airflow/Movie/")
-sys.path.append("/usr/local/airflow/utils/")
-sys.path.append("/usr/local/airflow/")
+sys.path.append("/usr/local/airflow-datapipeline/core/")
+sys.path.append("/usr/local/airflow-datapipeline/config/")
+sys.path.append("/usr/local/airflow-datapipeline/Movie/")
+sys.path.append("/usr/local/airflow-datapipeline/utils/")
+sys.path.append("/usr/local/airflow-datapipeline/")
 
 from core.execute import core_aggregation, core_db_insert_to_db, core_get_data
 from datetime import datetime, timedelta
