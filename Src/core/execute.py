@@ -1,4 +1,4 @@
-from Movie.connect import create_engine_pgsql, insert_to_db
+from Movie.connect import create_engine_pgsql, create_engine_mysql, insert_to_db
 from Movie.data_retrieval import merge_data, get_data
 from Movie.aggregation import agg_rating_tag, agg_rating_movie
 
@@ -23,7 +23,7 @@ def core_aggregation(**kwargs):
 
 def core_db_insert_to_db(**kwargs):
     task_instance = kwargs['ti']
-    engine = create_engine_pgsql()
+    engine = create_engine_mysql()
     df_agg_rating = task_instance.xcom_pull(key='df_agg_rating', task_ids='aggregation')
     df_agg_rating_genre = task_instance.xcom_pull(key='df_agg_rating_genre', task_ids='aggregation')
     insert_to_db(engine, df_agg_rating, 'agg_movie_ratings')
