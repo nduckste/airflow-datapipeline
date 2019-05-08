@@ -1,3 +1,8 @@
+from core.execute import core_aggregation, core_db_insert_to_db, core_get_data
+from datetime import datetime, timedelta
+from airflow import DAG
+from airflow.operators.python_operator import PythonOperator
+from utils.db import create_connection_object
 import sys
 
 sys.path.append("..")
@@ -7,13 +12,6 @@ sys.path.append("/usr/local/airflow/Movie/")
 sys.path.append("/usr/local/airflow/utils/")
 sys.path.append("/usr/local/airflow/")
 
-
-from core.execute import core_aggregation, core_db_insert_to_db, core_get_data
-from datetime import datetime, timedelta
-from airflow import DAG
-from airflow.operators.python_operator import PythonOperator
-from utils.db import create_connection_object
-
 SCHEDULE_INTERVAL = '@hourly'
 
 DB_CONN = create_connection_object('postgres_default')
@@ -22,7 +20,7 @@ default_args = {
     'owner': 'Business Intelligence',
     'depends_on_past': False,
     'start_date': datetime(2019, 1, 16),
-    'email_on_failure': True,
+    'email_on_failure': False,
     'email_on_retry': False,
     'retries': 3,
     'retry_delay': timedelta(minutes=5)

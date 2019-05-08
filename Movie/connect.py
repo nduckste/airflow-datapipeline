@@ -2,11 +2,10 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 
-def create_engine_pgsql(DB_CONN):
-    engine = create_engine(DB_CONN)
-
-    #'postgresql+psycopg2://postgres:postgres@localhost/postgres'
-     #                      , echo=False)
+def create_engine_pgsql():
+    #engine = create_engine(DB_CONN)
+    #dialect + driver: // username: password @ host:port / database
+    engine = create_engine('postgresql+psycopg2://postgres:pg@localhost/airflow', echo=False)
     return engine
 
 
