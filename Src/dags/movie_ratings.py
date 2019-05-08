@@ -1,3 +1,10 @@
+from ..core.execute import core_aggregation, core_db_insert_to_db, core_get_data
+from datetime import datetime, timedelta
+from airflow import DAG
+from airflow.operators.python_operator import PythonOperator
+
+from utils.db import create_connection_object
+
 import sys
 sys.path.append("..")
 sys.path.append("/usr/local/airflow-datapipeline/core/")
@@ -6,12 +13,6 @@ sys.path.append("/usr/local/airflow-datapipeline/Movie/")
 sys.path.append("/usr/local/airflow-datapipeline/utils/")
 sys.path.append("/usr/local/airflow-datapipeline/")
 
-from ..core.execute import core_aggregation, core_db_insert_to_db, core_get_data
-from datetime import datetime, timedelta
-from airflow import DAG
-from airflow.operators.python_operator import PythonOperator
-
-from utils.db import create_connection_object
 
 
 SCHEDULE_INTERVAL = '@hourly'
