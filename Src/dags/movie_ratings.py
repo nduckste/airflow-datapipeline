@@ -1,4 +1,4 @@
-from .. core.execute import core_aggregation, core_db_insert_to_db, core_get_data
+from ..core.execute import core_aggregation, core_db_insert_to_db, core_get_data
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
